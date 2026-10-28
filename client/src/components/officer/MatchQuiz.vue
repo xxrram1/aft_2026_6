@@ -59,12 +59,12 @@ const users = uselist('/api/getuser')
 const topics = uselist('/api/alltopic')
 
 form.value.user_id = ''
-form.value.boss_id = ''
+form.value.topic_id = ''
 
 const MatchQuiz = async () => {
     await add()
     if(form.value.user_id) form.value.user_id = ''
-    if(form.value.boss_id) form.value.boss_id = ''
+    if(form.value.topic_id) form.value.topic_id = ''
 }
 
 
