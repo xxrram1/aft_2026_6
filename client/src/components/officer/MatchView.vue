@@ -2,7 +2,7 @@
     <div>
         <h1>จับคู่ผู้รับการประเมิน กับ หัวข้อการประเมิน</h1>
         <p>ปีที่ประเมิน {{ YEAR }}</p>
-        <form>
+        <form @submit.prevent="MatchView()">
             <div>
                 <p>รายชื่อผู้รับการประเมิน</p>
                 <select v-model="form.user_id">
@@ -43,18 +43,31 @@
 </template>
 
 <script setup>
-import axios from 'axios';
 import { ref } from 'vue';
-import { api, useCrud, uselist } from '../../lib';
+import { useCrud, useList } from '../../lib';
 
-const {rows, form, add, edit, del} = useCrud({
-    add: '/api/bind-boss'
-}, {
+
+const { rows, form, add, edit, del} = useCrud({
+    add:'/api/bind-topic',
+    list:'/api/allbindtopic'
+},
+{
     eyal_year: YEAR
 })
 
-const users = uselist('/api/getuser')
-const bosses = uselist('/api/getboss')
+const users = useList('/api/getuser')
+const bosses = useList('/api/getboss')
+
+form.value.user_id = ''
+form.value.boss_id = ''
+
+const MatchView = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = ''
+    if (form.value.boss_id === null) form.value.boss_id = ''
+}
+
+
 </script>
 
 <style lang="scss" scoped>
