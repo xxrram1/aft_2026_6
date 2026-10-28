@@ -29,16 +29,16 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { thaidate, api, pickrows } from '../../lib';
 
 
 const rows = ref([])
-const form = ref({timestart: '', timeend: ''})
+const form = ref({time_start: '', time_end: ''})
 
 const getdata = async () => {
     try{
-        rows.value = pickrows((await api.get('/api/gettime')).data)
+        rows.value = pickrows((await api.get('/api/get-time')).data)
     } catch(e){
         alert(e)
     }
@@ -47,9 +47,21 @@ onMounted(getdata)
 
 const add = async () => {
     try{
-        await api.post('/api/settime', form.value)
+        await api.post('/api/set-time', form.value)
         alert('สำเร็จ')
-        form.value = {timestart: '', timeend: ''}
+        form.value = {time_start: '', time_end: ''}
+        getdata()
+    } catch(e){
+        alert(e)
+    }
+}
+
+const edit = async (r) => {
+    const datestartonly = new Date(r.time_start).toISOString().split('T')[0];
+    const dateendonly = new Date(r.time_end).toISOString().split('T')[0];
+    try{
+        await api.put('/api/set-time', { time_start: datestartonly, time_end: dateendonly })
+        alert('สำเร็จ')
         getdata()
     } catch(e){
         alert(e)
