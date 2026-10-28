@@ -21,7 +21,7 @@
                 <div>
                 <div>
                     <p>คะแนนที่ประเมินตัวเอง</p>
-                    <ScoreInput v-model="r.selfscore" :type="r.type" />
+                    <ScoreInput v-model="r.selfscore" :types="r.type" />
                 </div>
                 <div>
                     <p>ลิงก์ URL</p>
