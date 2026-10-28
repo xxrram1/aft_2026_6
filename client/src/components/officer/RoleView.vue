@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr v-for="r in rows" :key="r.id">
-                    <td>{{ r.firstname }} {{ r.lastname }}</td>
+                    <td>{{ r.firstname }} {{ r.lastname }} {{ r.username }}</td>
                     <td>{{ r.department }}</td>
                     <td>
                         <select v-model="r.role">

@@ -43,7 +43,7 @@
                 <button @click="del(r)">ลบ</button>
             </div>
         </div>
-        <p v-if="!row.length">ไม่มีข้อมูล</p>
+        <p v-if="!rows.length">ไม่มีข้อมูล</p>
     </div>
 
     </div>
