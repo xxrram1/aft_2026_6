@@ -11,6 +11,7 @@ import ReportView from "../components/officer/ReportView.vue";
 import RoleView from "../components/officer/RoleView.vue";
 import TimeView from "../components/officer/TimeView.vue";
 import TopicView from "../components/officer/TopicView.vue";
+import UserView from "../components/user/UserView.vue";
 import { jwtDecode } from "jwt-decode";
 
 const router = createRouter({
@@ -20,6 +21,7 @@ const router = createRouter({
         {path:'/register',component:RegisterView},
         {path:'/login',component:LoginView},
         //officer
+        {path:'/user',name:'',component:UserView, meta:{role:'user'}},
         {path:'/officer/chagpass/:id',name:'chagpass',component:ChagPass, meta:{role:'officer'}},
         {path:'/officer/createuser',name:'',component:CreateUser, meta:{role:'officer'}},
         {path:'/officer/matchquiz',name:'',component:MatchQuiz, meta:{role:'officer'}},
