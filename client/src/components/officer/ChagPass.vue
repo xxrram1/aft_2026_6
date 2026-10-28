@@ -1,6 +1,14 @@
 <template>
     <div>
-
+        <h1>เปลี่ยนรหัสผ่าน</h1>
+        <h1>ผู้ใช้งานรหัส {{ id }}</h1>
+        <form @submit.prevent="save()">
+            <div>
+                <p>รหัสผ่านใหม่</p>
+                <input v-model="password" type="password" placeholder="รหัสผ่านใหม่..." />
+            </div>
+            <button>เปลี่ยนรหัสผ่าน</button>
+        </form>
     </div>
 </template>
 
