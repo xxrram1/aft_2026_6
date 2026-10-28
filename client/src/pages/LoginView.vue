@@ -30,7 +30,7 @@ const handlelogin = async () => {
         return;
     }
     try {
-        const res = api.post('/api/login', form.value)
+        const res = await api.post('/api/login', form.value)
         localStorage.setItem('authtoken', res.data.token)
         alert('สำเร็จ')
         const role = jwtDecode(res.data.token).role
