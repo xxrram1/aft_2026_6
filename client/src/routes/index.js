@@ -11,9 +11,10 @@ import ReportView from "../components/officer/ReportView.vue";
 import RoleView from "../components/officer/RoleView.vue";
 import TimeView from "../components/officer/TimeView.vue";
 import TopicView from "../components/officer/TopicView.vue";
+import { jwtDecode } from "jwt-decode";
 
 const router = createRouter({
-    history:createWebHistory(),
+    history:createWebHistory(import.meta.env.BASE_URL),
     routes:[
         {path:'/',component:OverView},
         {path:'/register',component:RegisterView},
@@ -28,6 +29,21 @@ const router = createRouter({
         {path:'/officer/time',name:'',component:TimeView, meta:{role:'officer'}},
         {path:'/officer',name:'',component:TopicView, meta:{role:'officer'}},
     ]
+})
+
+const getrole = () => {
+    const token = localStorage.getItem('authtoken')
+    if(!token) return null
+    try{
+        return jwtDecode(token).role
+    } catch {
+        localStorage.removeItem('authtoken')
+        return null
+    }
+}
+
+router.beforeEach((to)=>{
+    if (to.meta.role && to.meta.role !== getrole()) return '/login'
 })
 
 export default router;

@@ -19,7 +19,7 @@ const fields = {
     password:'รหัสผ่าน',
 }
 
-const handleregister = async () => {
+const add = async () => {
     try{
         const res = await api.post('/api/create-user', form.value)
         alert('สำเร็จ')
