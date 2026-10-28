@@ -43,9 +43,20 @@
 </template>
 
 <script setup>
+<<<<<<< Updated upstream
 import axios from 'axios';
 import { ref } from 'vue';
 import { api, useCrud, uselist } from '../../lib';
+=======
+form.value.user_id = ''
+form.value.topic_id = ''
+
+const MatchQuiz = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = ''
+    if (form.value.topic_id === null) form.value.topic_id = ''
+}
+>>>>>>> Stashed changes
 
 const {rows, form, add, edit, del} = useCrud({
     add: '/api/bind-boss'

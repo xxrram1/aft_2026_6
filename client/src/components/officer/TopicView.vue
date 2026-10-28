@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>สร้างหัวข้อการประเมิน</h1>
-    <form>
+    <form @submit.prevent="TopicView()">
         <div>
             <p>ชื่อหัวข้อการะเมิน</p>
             <input v-model="form.name" type="text" placeholder="ชื่อหัวข้อ..." />
@@ -58,10 +58,18 @@ const types = [
     {id:'2',label:'ผ่าน / ไม่ผ่าน'},
 ]
 
+<<<<<<< Updated upstream
 const {rows, form, add, edit, del} = useCrud({
     add:'/api/addtopic',
     list: '/api/alltopic'
 })
+=======
+form.value.types = '';
+const TopicView = async () => {
+    await add()
+    if (!form.value.types) form.value.types = '';
+}
+>>>>>>> Stashed changes
 
 </script>
 

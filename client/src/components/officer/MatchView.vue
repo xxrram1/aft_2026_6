@@ -14,7 +14,7 @@
                 <p>หัวข้อการประเมิน</p>
                 <select v-model="form.topic_id">
                     <option disabled value="">--เลือกหัวข้อ----</option>
-                    <option v-for="t in topics" :key="t.id" :value="t.id">{{ t.name }}</option>
+                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ b.firstname }} {{ b.lastname }}</option>
                 </select>
             </div>
             <button>เพิ่มการจับคู่</button>
@@ -30,7 +30,7 @@
             <div>
                 <p>หัวข้อการประเมิน</p>
                 <select v-model="r.topic_id">
-                    <option v-for="t in topics" :key="t.id" :value="t.id">{{ t.name }}</option>
+                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ u.firstname }} {{ u.lastname }}</option>
                 </select>
             </div> 
             <div>
@@ -43,8 +43,19 @@
 </template>
 
 <script setup>
+<<<<<<< Updated upstream
 import { ref } from 'vue';
 import { useCrud, useList } from '../../lib';
+=======
+form.value.user_id = ''
+form.value.boss_id = ''
+
+const MatchQuiz = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = ''
+    if (form.value.boss_id === null) form.value.boss_id = ''
+}
+>>>>>>> Stashed changes
 
 const { rows, form, add, edit, del} = useCrud({
     add:'/api/bind-topic',
