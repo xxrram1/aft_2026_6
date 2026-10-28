@@ -19,7 +19,7 @@ const getdata = async () => {
 }
 onMounted(getdata)
 
-const add = async (r) => {
+const save = async (r) => {
     try{
         await api.put('/api/create-user', { id: r.id, role: r.role, position: r.postition})
         alert('สำเร็จ')
