@@ -38,24 +38,24 @@
                 <button @click="del(r)">ลบ</button>
             </div>           
         </div>
-            <p v-if="!row.length">ไม่มีข้อมูล</p>
+            <p v-if="!rows.length">ไม่มีข้อมูล</p>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useCrud, uselist } from '../../lib';
+import { useCrud, uselist, YEAR } from '../../lib';
 
 const { rows, form, add, edit, del} = useCrud({
-    add:'/api/bind-topic',
-    list:'/api/allbindtopic'
+    add:'/api/bind-boss',
+    list:'/api/get-bindboss'
 },
 {
     eyal_year: YEAR
 })
 
-const users = uselist('/api/getuser')
-const bosses = uselist('/api/getboss')
+const users = uselist('/api/get-user')
+const bosses = uselist('/api/get-boss')
 
 </script>
 

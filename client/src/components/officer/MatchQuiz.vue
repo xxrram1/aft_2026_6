@@ -2,7 +2,7 @@
     <div>
         <h1>จับคู่ผู้รับการประเมิน กับ หัวข้อการประเมิน</h1>
         <p>ปีที่ประเมิน {{ YEAR }}</p>
-        <form @submit.prevent="MatchQuiz()">
+        <form @submit.prevent="add()">
             <div>
                 <p>รายชื่อผู้รับการประเมิน</p>
                 <select v-model="form.user_id">
@@ -38,17 +38,18 @@
                 <button @click="del(r)">ลบ</button>
             </div>           
         </div>
-            <p v-if="!row.length">ไม่มีข้อมูล</p>
+            <p v-if="!rows.length">ไม่มีข้อมูล</p>
     </div>
 </template>
 
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
-import { api, useCrud, uselist } from '../../lib';
+import { api, useCrud, uselist, YEAR } from '../../lib';
 
 const {rows, form, add, edit, del} = useCrud({
-    add: '/api/bind-boss'
+    list: '/api/alltopic',
+    add: '/api/bind-topic'
 }, {
     eyal_year: YEAR
 })
