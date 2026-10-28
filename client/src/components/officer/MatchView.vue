@@ -2,7 +2,7 @@
     <div>
         <h1>จับคู่ผู้รับการประเมิน กับ หัวข้อการประเมิน</h1>
         <p>ปีที่ประเมิน {{ YEAR }}</p>
-        <form>
+        <form @submit.prevent="MatchView()">
             <div>
                 <p>รายชื่อผู้รับการประเมิน</p>
                 <select v-model="form.user_id">
@@ -43,19 +43,9 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream
 import { ref } from 'vue';
 import { useCrud, useList } from '../../lib';
-=======
-form.value.user_id = ''
-form.value.boss_id = ''
 
-const MatchQuiz = async () => {
-    await add()
-    if (form.value.user_id === null) form.value.user_id = ''
-    if (form.value.boss_id === null) form.value.boss_id = ''
-}
->>>>>>> Stashed changes
 
 const { rows, form, add, edit, del} = useCrud({
     add:'/api/bind-topic',
@@ -66,7 +56,17 @@ const { rows, form, add, edit, del} = useCrud({
 })
 
 const users = useList('/api/getuser')
-const topics = useList('/api/alltopic')
+const bosses = useList('/api/getboss')
+
+form.value.user_id = ''
+form.value.boss_id = ''
+
+const MatchView = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = ''
+    if (form.value.boss_id === null) form.value.boss_id = ''
+}
+
 </script>
 
 <style lang="scss" scoped>

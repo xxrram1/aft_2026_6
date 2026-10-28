@@ -31,7 +31,6 @@
 <script setup>
 import { thaidate } from '../../lib';
 
-
 </script>
 
 <style lang="scss" scoped>
