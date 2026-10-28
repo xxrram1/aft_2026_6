@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream
  import axios from 'axios';
  import {ref} from 'vue'
  import { useRouter } from 'vue-router'
@@ -23,11 +22,7 @@
  import { api } from '../lib';
 
  
-=======
-import { ref } from 'vue';
-
 const form = ref({username:'',password:''})
->>>>>>> Stashed changes
 </script>
 
 <style lang="scss" scoped>
