@@ -24,7 +24,7 @@ const router = createRouter({
         {path:'/login',component:LoginView},
         {path:'/chagpassvue/:id',name:'changpassvue',component: ChagPassvue},
         //officer
-        {path:'/user',name:'',component:UserView, meta:{role:'user'}},
+        {path:'/users',name:'',component:UserView, meta:{role:'users'}},
         {path:'/boss',name:'',component:BossView, meta:{role:'boss'}},
         {path:'/officer/chagpass/:id',name:'chagpass',component:ChagPass, meta:{role:'officer'}},
         {path:'/officer/createuser',name:'',component:CreateUser, meta:{role:'officer'}},

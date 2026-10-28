@@ -55,7 +55,7 @@ const {rows, form, add, edit, del} = useCrud({
     eyal_year: YEAR
 })
 
-const users = uselist('/api/getuser')
+const users = uselist('/api/get-user')
 const topics = uselist('/api/alltopic')
 
 form.value.user_id = ''
