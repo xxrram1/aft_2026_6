@@ -15,13 +15,11 @@
 </template>
 
 <script setup>
-
  import axios from 'axios';
  import {ref} from 'vue'
  import { useRouter } from 'vue-router'
  import { jwtDecode } from 'jwt-decode';
  import { api } from '../lib';
-import { use } from 'react';
 
 const router = useRouter()
 const form = ref({username:'',password:''})
