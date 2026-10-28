@@ -44,13 +44,7 @@ const getdata = async () => {
 }
 onMounted(getdata)
 
-const submit = async () => {
-    try {
-        for (const r of rows.value) {
-            await api.post('/api/')
-        }
-    }
-}
+
 </script>
 
 <style lang="scss" scoped>
