@@ -7,7 +7,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { api } from '../lib';
+import { api } from '../../lib';
 
 const form = ref({});
 const fields = {

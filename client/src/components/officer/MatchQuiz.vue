@@ -44,7 +44,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useCrud, useList } from '../../lib';
+import { useCrud, uselist } from '../../lib';
 
 const { rows, form, add, edit, del} = useCrud({
     add:'/api/bind-topic',
