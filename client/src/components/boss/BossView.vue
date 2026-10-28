@@ -32,9 +32,25 @@
 
 <script setup>
 import ScoreInput from '../../assets/ScoreInput.vue';
-import { YEAR } from '../../lib';
+import { YEAR, api } from '../../lib';
+import { ref, onMounted } from 'vue';
+const rows = ref([])
+const getdata = async () => {
+    try{
+        rows.value = (await api.get('/api/get-userinreview')).data.message
+    } catch(e){
+        alert(e)
+    }
+}
+onMounted(getdata)
 
-
+const submit = async () => {
+    try {
+        for (const r of rows.value) {
+            await api.post('/api/')
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
