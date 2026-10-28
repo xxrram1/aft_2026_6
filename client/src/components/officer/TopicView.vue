@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>สร้างหัวข้อการประเมิน</h1>
-    <form @submit.prevent="AddTopic()">
+    <form @submit.prevent="add()">
         <div>
             <p>ชื่อหัวข้อการะเมิน</p>
             <input v-model="form.name" type="text" placeholder="ชื่อหัวข้อ..." />
@@ -35,7 +35,7 @@
             <input v-model="r.detail" />
             <input v-model="r.base_url" />
             <input v-model="r.weight" />
-            <select v-model="r.type">
+            <select v-model="r.types">
                 <option v-for="t in types" :key="t.id" :value="t.id">{{ t.label }}</option>
             </select>
             <div>
@@ -64,10 +64,6 @@ const {rows, form, add, edit, del} = useCrud({
 })
 
 form.value.types = ''
-const AddTopic = async () => {
-    await add()
-    if (!form.value.types) form.value.types = ''
-}
 
 </script>
 
