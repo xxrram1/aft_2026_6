@@ -14,6 +14,7 @@ import TopicView from "../components/officer/TopicView.vue";
 import UserView from "../components/user/UserView.vue";
 import ChagPassvue from "../pages/ChagPassvue.vue";
 import { jwtDecode } from "jwt-decode";
+import BossView from "../components/boss/BossView.vue";
 
 const router = createRouter({
     history:createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,7 @@ const router = createRouter({
         {path:'/chagpassvue/:id',name:'changpassvue',component: ChagPassvue},
         //officer
         {path:'/user',name:'',component:UserView, meta:{role:'user'}},
+        {path:'/boss',name:'',component:BossView, meta:{role:'boss'}},
         {path:'/officer/chagpass/:id',name:'chagpass',component:ChagPass, meta:{role:'officer'}},
         {path:'/officer/createuser',name:'',component:CreateUser, meta:{role:'officer'}},
         {path:'/officer/matchquiz',name:'',component:MatchQuiz, meta:{role:'officer'}},
