@@ -13,7 +13,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { api } from '../lib';
+import { api } from '../../lib';
 
 const form = ref({});
 const fields = {
@@ -25,7 +25,7 @@ const fields = {
     password:'รหัสผ่าน',
 }
 
-const handleregister = async () => {
+const add = async () => {
     try{
         const res = await api.post('/api/create-user', form.value)
         alert('สำเร็จ')

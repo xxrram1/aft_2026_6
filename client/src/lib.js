@@ -4,7 +4,7 @@ import  {ref, onMounted} from 'vue'
 
 export const api = new axios.create({ baseURL: import.meta.env.VITE_API})
 
-axios.interceptors.request.use((config)=> {
+api.interceptors.request.use((config)=> {
     if(!config.url || !config.url.includes('/api/')){
         throw new axios.CanceledError('ยังไม่ได้ตั้ง url')
     }

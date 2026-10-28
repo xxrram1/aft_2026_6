@@ -55,18 +55,6 @@ const {rows, form, add, edit, del} = useCrud({
 
 const users = uselist('/api/getuser')
 const topics = uselist('/api/alltopic')
-
-
-form.value.user_id = ''
-form.value.topic_id = ''
-
-const MatchQuiz = async () => {
-    await add()
-    if (form.value.user_id === null) form.value.user_id = ''
-    if (form.value.topic_id === null) form.value.topic_id = ''
-}
-
-
 </script>
 
 <style lang="scss" scoped>

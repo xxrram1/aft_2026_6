@@ -1,6 +1,6 @@
 <template>
     <div>   
-        <form  class="min-h-screen flex  flex-col justify-center space-y-2 items-center p-3" @submit.prevent="">
+        <form  class="min-h-screen flex  flex-col justify-center space-y-2 items-center p-3" @submit.prevent="handleregister()">
             <div v-for="(value,key) in fields" :key="key">
                 <h1>{{ value }}</h1>
                 <input class="rounded-xl w-90 border p-2"  v-model="form[key]" :type="key === 'password' ? 'password' : 'text'" :placeholder="value + '...'"  />

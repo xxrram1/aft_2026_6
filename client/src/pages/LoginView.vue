@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form class="min-h-screen flex  flex-col justify-center space-y-2 items-center p-3" @submit.prevent="">
+        <form class="min-h-screen flex  flex-col justify-center space-y-2 items-center p-3" @submit.prevent="handlelogin()">
             <div>
                 <p>ชื่อผู้ใช้งาน</p>
                 <input class="rounded-xl w-90 border p-2" v-model="form.username" placeholder="ชื่อผู้ใช้งาน..." type="text" />
@@ -30,7 +30,7 @@ const handlelogin = async () => {
         return;
     }
     try {
-        const res = api.post('/api/login', form.value)
+        const res = await api.post('/api/login', form.value)
         localStorage.setItem('authtoken', res.data.token)
         alert('สำเร็จ')
         const role = jwtDecode(res.data.token).role

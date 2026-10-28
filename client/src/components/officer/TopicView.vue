@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>สร้างหัวข้อการประเมิน</h1>
-    <form @submit.prevent="TopicView()">
+    <form @submit.prevent="add()">
         <div>
             <p>ชื่อหัวข้อการะเมิน</p>
             <input v-model="form.name" type="text" placeholder="ชื่อหัวข้อ..." />
@@ -59,16 +59,9 @@ const types = [
 ]
 
 const {rows, form, add, edit, del} = useCrud({
-    add:'/api/addtopic',
+    add:'/api/add-topic',
     list: '/api/alltopic'
 })
-form.value.types = '';
-const TopicView = async () => {
-    await add()
-    if (!form.value.types) form.value.types = '';
-}
-
-
 </script>
 
 <style lang="scss" scoped>
