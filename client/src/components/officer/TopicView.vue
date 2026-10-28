@@ -58,19 +58,10 @@ const types = [
     {id:'2',label:'ผ่าน / ไม่ผ่าน'},
 ]
 
-<<<<<<< Updated upstream
 const {rows, form, add, edit, del} = useCrud({
     add:'/api/addtopic',
     list: '/api/alltopic'
 })
-=======
-form.value.types = '';
-const TopicView = async () => {
-    await add()
-    if (!form.value.types) form.value.types = '';
-}
->>>>>>> Stashed changes
-
 </script>
 
 <style lang="scss" scoped>

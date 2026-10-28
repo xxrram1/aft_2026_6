@@ -29,9 +29,31 @@
 </template>
 
 <script setup>
-import { thaidate } from '../../lib';
+import { onMounted } from 'vue';
+import { thaidate, api, pickrows } from '../../lib';
 
+const rows = ref([])
+const form = ref({timestart: '', timeend: ''})
 
+const getdata = async () => {
+    try{
+        rows.value = pickrows((await api.get('/api/gettime')).data)
+    } catch(e){
+        alert(e)
+    }
+}
+onMounted(getdata)
+
+const add = async () => {
+    try{
+        await api.post('/api/settime', form.value)
+        alert('สำเร็จ')
+        form.value = {timestart: '', timeend: ''}
+        getdata()
+    } catch(e){
+        alert(e)
+    }
+}
 </script>
 
 <style lang="scss" scoped>

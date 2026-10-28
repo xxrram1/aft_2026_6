@@ -43,30 +43,18 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream
+import axios from 'axios';
 import { ref } from 'vue';
-import { useCrud, useList } from '../../lib';
-=======
-form.value.user_id = ''
-form.value.boss_id = ''
+import { api, useCrud, uselist } from '../../lib';
 
-const MatchQuiz = async () => {
-    await add()
-    if (form.value.user_id === null) form.value.user_id = ''
-    if (form.value.boss_id === null) form.value.boss_id = ''
-}
->>>>>>> Stashed changes
-
-const { rows, form, add, edit, del} = useCrud({
-    add:'/api/bind-topic',
-    list:'/api/allbindtopic'
-},
-{
+const {rows, form, add, edit, del} = useCrud({
+    add: '/api/bind-boss'
+}, {
     eyal_year: YEAR
 })
 
-const users = useList('/api/getuser')
-const topics = useList('/api/alltopic')
+const users = uselist('/api/getuser')
+const bosses = uselist('/api/getboss')
 </script>
 
 <style lang="scss" scoped>
