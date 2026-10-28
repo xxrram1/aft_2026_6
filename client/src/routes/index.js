@@ -3,12 +3,30 @@ import LoginView from "../pages/LoginView.vue";
 import RegisterView from "../pages/RegisterView.vue";
 import OverView from "../pages/OverView.vue";
 
+import ChagPass from "../components/officer/ChagPass.vue";
+import CreateUser from "../components/officer/CreateUser.vue";
+import MatchQuiz from "../components/officer/MatchQuiz.vue";
+import MatchView from "../components/officer/MatchView.vue";
+import ReportView from "../components/officer/ReportView.vue";
+import RoleView from "../components/officer/RoleView.vue";
+import TimeView from "../components/officer/TimeView.vue";
+import TopicView from "../components/officer/TopicView.vue";
+
 const router = createRouter({
     history:createWebHistory(),
     routes:[
         {path:'/',component:OverView},
         {path:'/register',component:RegisterView},
         {path:'/login',component:LoginView},
+        //officer
+        {path:'/officer/chagpass/:id',name:'chagpass',component:ChagPass, meta:{role:'officer'}},
+        {path:'/officer/createuser',name:'',component:CreateUser, meta:{role:'officer'}},
+        {path:'/officer/matchquiz',name:'',component:MatchQuiz, meta:{role:'officer'}},
+        {path:'/officer/match',name:'',component:MatchView, meta:{role:'officer'}},
+        {path:'/officer/report',name:'',component:ReportView, meta:{role:'officer'}},
+        {path:'/officer/role',name:'',component:RoleView, meta:{role:'officer'}},
+        {path:'/officer/time',name:'',component:TimeView, meta:{role:'officer'}},
+        {path:'/officer',name:'',component:TopicView, meta:{role:'officer'}},
     ]
 })
 

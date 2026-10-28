@@ -1,6 +1,7 @@
 <template>
     <div>
-over
+        <RouterLink to="/login">login</RouterLink>
+        <RouterLink to="/register">register</RouterLink>
     </div>
 </template>
 
