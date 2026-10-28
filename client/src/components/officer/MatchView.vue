@@ -57,6 +57,15 @@ const { rows, form, add, edit, del} = useCrud({
 const users = uselist('/api/get-user')
 const bosses = uselist('/api/get-boss')
 
+form.value.user_id = ''
+form.value.boss_id = ''
+
+const MatchView = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = '' 
+    if (form.value.boss_id === null) form.value.boss_id = '' 
+}
+
 </script>
 
 <style lang="scss" scoped>
