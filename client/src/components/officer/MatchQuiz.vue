@@ -43,7 +43,18 @@
 </template>
 
 <script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import { api, useCrud, uselist } from '../../lib';
 
+const {rows, form, add, edit, del} = useCrud({
+    add: '/api/bind-boss'
+}, {
+    eyal_year: YEAR
+})
+
+const users = uselist('/api/getuser')
+const bosses = uselist('/api/getboss')
 </script>
 
 <style lang="scss" scoped>

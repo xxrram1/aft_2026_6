@@ -43,7 +43,19 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useCrud, useList } from '../../lib';
 
+const { rows, form, add, edit, del} = useCrud({
+    add:'/api/bind-topic',
+    list:'/api/allbindtopic'
+},
+{
+    eyal_year: YEAR
+})
+
+const users = useList('/api/getuser')
+const topics = useList('/api/alltopic')
 </script>
 
 <style lang="scss" scoped>

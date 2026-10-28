@@ -15,19 +15,32 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream
+
  import axios from 'axios';
  import {ref} from 'vue'
  import { useRouter } from 'vue-router'
  import { jwtDecode } from 'jwt-decode';
  import { api } from '../lib';
+import { use } from 'react';
 
- 
-=======
-import { ref } from 'vue';
-
+const router = useRouter()
 const form = ref({username:'',password:''})
->>>>>>> Stashed changes
+
+const handlelogin = async () => {
+    if(!form.value.username || !form.value.password){
+        alert('สำเร็จ')
+        return;
+    }
+    try {
+        const res = api.post('/api/login', form.value)
+        localStorage.setItem('authtoken', res.data.token)
+        alert('สำเร็จ')
+        const role = jwtDecode(res.data.token).role
+        router.push('/' + role)
+    } catch(e){
+        alert(e)
+    }
+}
 </script>
 
 <style lang="scss" scoped>

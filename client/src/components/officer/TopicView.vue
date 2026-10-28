@@ -50,12 +50,18 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { api, useCrud } from '../../lib';
+
 const types = [
     {id:'1',label:'คะแนน 1-4'},
     {id:'2',label:'ผ่าน / ไม่ผ่าน'},
 ]
 
-
+const {rows, form, add, edit, del} = useCrud({
+    add:'/api/addtopic',
+    list: '/api/alltopic'
+})
 
 </script>
 
