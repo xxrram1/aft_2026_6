@@ -32,13 +32,14 @@ const handlelogin = async () => {
         const res = await api.post('/api/login', form.value)
         localStorage.setItem('authtoken', res.data.token)
         alert('เข้าสู่ระบบสำเร็จ')
-        
+
         const decoded = jwtDecode(res.data.token)
         const id = decoded.id
         const role = decoded.role
-        
+
         if( res.data.firstlogin === true) {
         router.push(`/chagpassvue/${id}`) } 
+        
         else{
             router.push('/' + role)
         }

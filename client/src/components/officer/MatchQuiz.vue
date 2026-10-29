@@ -61,13 +61,6 @@ const topics = uselist('/api/alltopic')
 form.value.user_id = ''
 form.value.topic_id = ''
 
-const MatchQuiz = async () => {
-    await add()
-    if(form.value.user_id) form.value.user_id = ''
-    if(form.value.topic_id) form.value.topic_id = ''
-}
-
-
 </script>
 
 <style lang="scss" scoped>
