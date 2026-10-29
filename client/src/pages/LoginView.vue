@@ -38,7 +38,8 @@ const handlelogin = async () => {
         const role = decoded.role
         
         if( res.data.firstlogin === true) {
-        router.push(`/chagpassvue/${id}`) } else{
+        router.push(`/chagpassvue/${id}`) } 
+        else{
             router.push('/' + role)
         }
     } catch (e) {

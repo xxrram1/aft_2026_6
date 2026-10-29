@@ -44,7 +44,17 @@ const getdata = async () => {
 }
 onMounted(getdata)
 
-
+const submit = async () => {
+    try{
+        for (const r of rows.value) {
+            await api.post('/api/submit', {id: r.id, score: r.score, review: r.review, sign: r.sign})
+            alert('สำเร็จ')
+            getdata()
+        }
+    } catch(e){
+        alert(e)
+    }
+}
 </script>
 
 <style lang="scss" scoped>
