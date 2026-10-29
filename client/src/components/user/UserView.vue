@@ -47,7 +47,7 @@ const rows = ref([])
 
 const getprofile = async () => {
     try{
-        profile.value = (await api.get('/api/getprofile')).data.message
+        profile.value = (await api.get('/api/getprofile-user')).data.message.rows
     } catch(e) {
         alert(e)
     }

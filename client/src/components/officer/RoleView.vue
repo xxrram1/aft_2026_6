@@ -1,17 +1,17 @@
 <template>
     <div>
-        <table>
-            <thead>
+        <table class="w-full">
+            <thead class="w-full">
                 <tr>
-                    <th>ชื่อนามสกุล</th>
+                    <th>ชื่อ-นามสกุล / ชื่อผู้ใช้</th>
                     <th>แผนก</th>
                     <th>บทบาท</th>
-                    <th>สิทธิ์</th>
+                    <th>ตำแหน่ง</th>
                     <th>บันทึก</th>
                     <th>เปลี่ยนรหัสผ่าน</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody  class="w-full">
                 <tr v-for="r in rows" :key="r.id">
                     <td>{{ r.firstname }} {{ r.lastname }} {{ r.username }}</td>
                     <td>{{ r.department }}</td>
@@ -26,7 +26,7 @@
                         </select>
                     </td>
                     <td><button @click="save(r)">บันทึก</button></td>
-                    <td><RouterLink :to="{name:'chagpass',params:{id:id}}">เปลี่ยนรหัสผ่าน</RouterLink></td>
+                    <td><RouterLink :to="{name:'chagpass',params:{id:r.id}}">เปลี่ยนรหัสผ่าน</RouterLink></td>
                 </tr>
             </tbody>
         </table>
@@ -39,7 +39,7 @@ import { ref,onMounted } from 'vue';
 import { api, pickrows } from '../../lib';
 
 const roles = [
-    {id:'user',label:'ผู้รับการประเมิน'},
+    {id:'users',label:'ผู้รับการประเมิน'},
     {id:'boss',label:'กรรมการ'},
     {id:'officer',label:'เจ้าหน้าที่'}
 ]
@@ -53,7 +53,7 @@ const rows =ref([])
 
 const getdata = async () => {
     try{
-        rows.value = pickrows((await api.get('/api/role')).data)
+        rows.value = pickrows((await api.get('/api/get-alluser')).data.rows)
     } catch(e) {
         alert(e)
     }
@@ -62,12 +62,15 @@ onMounted(getdata)
 
 const save = async (r) => {
     try{
-        await api.put('/api/create-user', { id: r.id, role: r.role, position: r.postition})
+        await api.put('/api/create-user', { id: r.id, role: r.role, position: r.position})
         alert('สำเร็จ')
     } catch(e){
         alert(e)
     }
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
