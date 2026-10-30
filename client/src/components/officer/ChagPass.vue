@@ -23,10 +23,9 @@ const router = useRouter()
 const id = route.params.id
 
 const password = ref('')
-
 const save = async () => {
     try{
-        await api.put('/api/create-user', {id, password: password.value})
+        await api.put('/api/editprofile-user', {id, password: password.value})
         alert('สำเร็จ')
         router.push('/officer/role')
     } catch(e) {

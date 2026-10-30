@@ -4,11 +4,11 @@
         <form @submit.prevent="add()">
             <div>
                 <p>เวลาเริ่ม</p>
-                    <input v-model="form.time_start" type="date"  />
+                <input v-model="form.time_start" type="date"  />
             </div>
             <div>
                 <p>เวลาปิด</p>
-                    <input v-model="form.time_end" type="date"  />
+                <input v-model="form.time_end" type="date"  />
             </div>
             <button>เพิ่มช่วงเวลา</button>
         </form>

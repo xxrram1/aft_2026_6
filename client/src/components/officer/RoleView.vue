@@ -5,8 +5,8 @@
                 <tr>
                     <th>ชื่อ-นามสกุล / ชื่อผู้ใช้</th>
                     <th>แผนก</th>
-                    <th>บทบาท</th>
                     <th>ตำแหน่ง</th>
+                    <th>บทบาท</th>
                     <th>บันทึก</th>
                     <th>เปลี่ยนรหัสผ่าน</th>
                 </tr>
@@ -62,7 +62,7 @@ onMounted(getdata)
 
 const save = async (r) => {
     try{
-        await api.put('/api/create-user', { id: r.id, role: r.role, position: r.position})
+        await api.put('/api/editprofile-user', { id: r.id, role: r.role, position: r.position})
         alert('สำเร็จ')
     } catch(e){
         alert(e)

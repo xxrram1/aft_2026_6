@@ -2,7 +2,7 @@
     <div>
         <h1>จับคู่ผู้รับการประเมิน กับ หัวข้อการประเมิน</h1>
         <p>ปีที่ประเมิน {{ YEAR }}</p>
-        <form @submit.prevent="add()">
+        <form @submit.prevent="addrow()">
             <div>
                 <p>รายชื่อผู้รับการประเมิน</p>
                 <select v-model="form.user_id">
@@ -20,24 +20,20 @@
             <button>เพิ่มการจับคู่</button>
         </form>
 
-        <div v-for="r in rows" :key="r.id">
-            <div>
-                <p>รายชื่อผู้รับการประเมิน</p>
-                <select v-model="r.user_id">
-                    <option v-for="u in users" :key="u.id" :value="u.id">{{ u.firstname }} {{ u.lastname }}</option>
-                </select>
-            </div>
-            <div>
-                <p>หัวข้อการประเมิน</p>
-                <select v-model="r.topic_id">
-                    <option v-for="t in topics" :key="t.id" :value="t.id">{{ t.name }}</option>
-                </select>
-            </div> 
-            <div>
-                <button @click="edit(r)">แก้ไข</button>
-                <button @click="del(r)">ลบ</button>
-            </div>           
-        </div>
+                    <div v-for="r in rows" :key="r.id">
+                        <select v-model="r.user_id">
+                            <option disabled value="">--เลือกผู้รับการประเมิน--</option>
+                            <option v-for="u in users" :key="u.id" :value="u.id">{{ u.firstname }} {{ u.lastname }}</option>
+                        </select>
+                        <select v-model="r.topic_id">
+                            <option disabled value="">--เลือกหัวข้อ--</option>
+                            <option v-for="t in topics" :key="t.id" :value="t.id">{{ t.name }}</option>
+                        </select>
+                        <div>
+                            <button @click="edit(r)">แก้ไข</button>
+                            <button @click="del(r)">ลบ</button>
+                        </div>
+                    </div>
             <p v-if="!rows.length">ไม่มีข้อมูล</p>
     </div>
 </template>
@@ -49,7 +45,7 @@ import { api, useCrud, uselist, YEAR } from '../../lib';
 
 
 const {rows, form, add, edit, del} = useCrud({
-    list: '/api/alltopic',
+    list: '/api/get-allbindtopic',
     add: '/api/bind-topic'
 }, {
     eyal_year: YEAR
@@ -60,6 +56,12 @@ const topics = uselist('/api/alltopic')
 
 form.value.user_id = ''
 form.value.topic_id = ''
+
+const addrow = async () => {
+    await add()
+    if (form.value.user_id == null) form.value.user_id = ''
+    if (form.value.topic_id == null) form.value.topic_id = ''
+}
 
 </script>
 

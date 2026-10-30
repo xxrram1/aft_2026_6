@@ -14,9 +14,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="r in report.table" :key="r.no">
-                    <td>{{ r.no }}</td>
-                    <td>{{ r.firstname }} {{ r.lastname }}</td>
+                <tr v-for="(r, index) in report.table" :key="index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ r.user }}</td>
                     <td>{{ r.topic }}</td>
                     <td>{{ r.boss }}</td>
                     <td>{{ r.selfscore }}</td>
@@ -35,7 +35,10 @@
         <button @click="detail()">ดูรายละเอียด</button>
     </div>
 
-
+    <div>
+        <h1>สำรองข้อมูลไฟล์</h1>
+        <button></button>
+    </div>
 
 </template>
 

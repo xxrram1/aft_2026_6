@@ -30,7 +30,7 @@
             <div>
                 <p>หัวข้อการประเมิน</p>
                 <select v-model="r.boss_id">
-                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ [b.firstname, b.lastname].filter(Boolean).join(' ') || b.username }}</option>
+                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ [b.firstname, b.lastname].filter(Boolean).join(' ')}}</option>
                 </select>
             </div> 
             <div>
@@ -60,6 +60,12 @@ const bosses = uselist('/api/get-boss')
 form.value.user_id = ''
 form.value.boss_id = ''
 
+const MatchView = async () => {
+    await add()
+    if (form.value.user_id === null) form.value.user_id = ''
+    if (form.value.boss_id === null) form.value.boss_id = ''
+
+}
 
 
 </script>

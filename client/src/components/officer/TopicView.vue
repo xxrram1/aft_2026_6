@@ -36,6 +36,7 @@
             <input v-model="r.base_url" />
             <input v-model="r.weight" />
             <select v-model="r.types">
+            <option disabled value="">--เลือกหัวข้อ--</option>
                 <option v-for="t in types" :key="t.id" :value="t.id">{{ t.label }}</option>
             </select>
             <div>
