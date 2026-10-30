@@ -2,7 +2,7 @@
     <div>
         <h1>จับคู่ผู้รับการประเมิน กับ หัวข้อการประเมิน</h1>
         <p>ปีที่ประเมิน {{ YEAR }}</p>
-        <form @submit.prevent="MatchView()">
+        <form @submit.prevent="add()">
             <div>
                 <p>รายชื่อผู้รับการประเมิน</p>
                 <select v-model="form.user_id">

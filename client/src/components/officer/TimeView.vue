@@ -32,7 +32,6 @@
 import { ref, onMounted } from 'vue';
 import { thaidate, api, pickrows } from '../../lib';
 
-
 const rows = ref([])
 const form = ref({time_start: '', time_end: ''})
 

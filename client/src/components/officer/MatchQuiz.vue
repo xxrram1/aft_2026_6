@@ -43,7 +43,6 @@ import axios from 'axios';
 import { ref } from 'vue';
 import { api, useCrud, uselist, YEAR } from '../../lib';
 
-
 const {rows, form, add, edit, del} = useCrud({
     list: '/api/get-allbindtopic',
     add: '/api/bind-topic'
