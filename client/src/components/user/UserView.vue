@@ -56,7 +56,7 @@ const getprofile = async () => {
 const getdata = async () => {
     try{
         rows.value = pickrows((await api.get('/api/get-topicself')).data)
-
+        
     } catch(e) {
         alert(e)
     }

@@ -34,7 +34,9 @@
 import ScoreInput from '../../assets/ScoreInput.vue';
 import { YEAR, api } from '../../lib';
 import { ref, onMounted } from 'vue';
+
 const rows = ref([])
+
 const getdata = async () => {
     try{
         rows.value = (await api.get('/api/get-userinreview')).data.message
