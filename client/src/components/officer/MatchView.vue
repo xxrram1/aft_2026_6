@@ -20,15 +20,15 @@
             <button>เพิ่มการจับคู่</button>
         </form>
 
-        <div v-for="r in rows" :key="r.id">
+        <div class="" v-for="r in rows" :key="r.id">
             <div>
-                <p>กรรมการผู้ประเมิน</p>
+                <p>ผู้รับการประเมิน</p>
                 <select v-model="r.user_id">
                     <option v-for="u in users" :key="u.id" :value="u.id">{{ u.firstname }} {{ u.lastname }}</option>
                 </select>
             </div>
             <div>
-                <p>หัวข้อการประเมิน</p>
+                <p>กรรมการผู้ประเมิน</p>
                 <select v-model="r.boss_id">
                     <option v-for="b in bosses" :key="b.id" :value="b.id">{{ [b.firstname, b.lastname].filter(Boolean).join(' ')}}</option>
                 </select>
