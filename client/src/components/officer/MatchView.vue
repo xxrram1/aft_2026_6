@@ -13,8 +13,8 @@
             <div>
                 <p>กรรมการผู้ประเมิน</p>
                 <select v-model="form.boss_id">
-                    <option disabled value="">--เลือกหัวข้อ----</option>
-                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ b.firstname }} {{ b.lastname }}</option>
+                    <option disabled value="">--เลือกกรรมการ--</option>
+                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ [b.firstname, b.lastname].filter(Boolean).join(' ') || b.username }}</option>
                 </select>
             </div>
             <button>เพิ่มการจับคู่</button>
@@ -30,7 +30,7 @@
             <div>
                 <p>หัวข้อการประเมิน</p>
                 <select v-model="r.boss_id">
-                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ u.firstname }} {{ u.lastname }}</option>
+                    <option v-for="b in bosses" :key="b.id" :value="b.id">{{ [b.firstname, b.lastname].filter(Boolean).join(' ') || b.username }}</option>
                 </select>
             </div> 
             <div>
