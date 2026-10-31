@@ -41,7 +41,7 @@
             </select>
             <div>
                 <button @click="edit(r)">แก้ไข</button>
-                <button @click="del(r)">ลบ</button>
+                <button @click="dels(r)">ลบ</button>
             </div>
         </div>
         <p v-if="!rows.length">ไม่มีข้อมูล</p>
@@ -61,8 +61,17 @@ const types = [
 
 const {rows, form, add, edit, del} = useCrud({
     add:'/api/add-topic',
-    list: '/api/alltopic'
+    list: '/api/alltopic',
 })
+
+const dels = async(r) => {
+    try{
+        await api.delete('/api/delete-topic', {data:{topic_id : r.id}})
+        alert('สำเร็จ')
+    } catch(e) {
+        alert(e)
+    }
+}
 
 form.value.types = ''
 

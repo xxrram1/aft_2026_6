@@ -15,7 +15,7 @@
             <p>ปีที่ประเมิน {{ YEAR }}</p>
         </div>
 
-        <form>
+        <form @submit.prevent="submitall()">
             <h1>แบบประเมินตนเอง</h1>
             <div class="border rounded-xl " v-for="r in rows" :key="r.id">
                 <p>หัวข้อ: {{ r.name }} <span>น้ำหนักคะแนน( {{ r.weight }})</span></p>
@@ -35,6 +35,7 @@
                 
             </div>
             <p v-if="!rows.length">ยังไม่ได้รับมอบหมายหัวข้อการประเมิน</p>
+            <button>ยืนยันแบบประเมิน</button>
         </form>
 
     </div>
@@ -94,7 +95,7 @@ const submit = async (row) => {
 
 const submitall = async () => {
     try {
-        await api.post('/api/submituser-topic', {
+        await api.post('/api/submituser-all', {
             wang: wang.value
         })
         alert('สำเร็จ')
